@@ -2,13 +2,59 @@
 # CS5103 Final Project
 # transform datetime string to different time zone
 # add information needed for calculating daylight savings time
-# mm:dd:yyyy:hh:mm:TZD  <- month:day:year:Military time : TZD = Time Zone Designator
+# MM:DD:YYYY:hh:mm:TZD newTZD  <- month:day:year:Military time : TZD = Time Zone Designator
 # EX : 12:21:2022:15:30:UTC
 
 import sys
 
-# Grab user input - split by :
-userInput = sys.argv[1].split(":")
+
+# Check to see if user input any information
+if len(sys.argv) == 1:
+    print("Please add the correct information when running the program")
+    print("Run \"python3 DateTime.py -h\" if you need help")
+    sys.exit()
+
+# Grab user input
+userInput = sys.argv[1]
+
+if userInput == '-h':
+    print("Please run the code with the following format :")
+    print()
+    print("\"python3 DateTime.py MM:DD:YYY:hh:mm:TZD newTZD\"")
+    print()
+    print("MM   = Month")
+    print("DD   = Day")
+    print("YYYY = Year")
+    print("hh   = Hour")
+    print("mm   = Minute")
+    print("TZD  = Time Zone Designator")
+    print()
+    print("Available Time Zone Designators to choose from :")
+    print()
+    print("HST  - Hawaii Standard Time")
+    print("HDT  - Hawaii-Aleutian Daylight Time")
+    print("AKDT - Alaska Daylight Time")
+    print("PDT  - Pacific Daylight Time")
+    print("MST  - Mountain Standard Time")
+    print("MDT  - Mountain Daylight Time")
+    print("CDT  - Central Daylight Time")
+    print("EDT  - Eastern Daylight Time")
+    sys.exit()
+
+if userInput == '-tzd':
+    print("Available Time Zone Designators to choose from :")
+    print()
+    print("HST  - Hawaii Standard Time")
+    print("HDT  - Hawaii-Aleutian Daylight Time")
+    print("AKDT - Alaska Daylight Time")
+    print("PDT  - Pacific Daylight Time")
+    print("MST  - Mountain Standard Time")
+    print("MDT  - Mountain Daylight Time")
+    print("CDT  - Central Daylight Time")
+    print("EDT  - Eastern Daylight Time")
+    sys.exit()
+
+userInput = userInput.split(":")
 
 month = int(userInput[0])
 day = int(userInput[1])
@@ -38,9 +84,10 @@ elif (tzd == 'CDT'):
     newHour += 5
 elif (tzd == 'EDT'):
     newHour += 4
-
 else:
     print("You have not entered a valid TZD")
+    print("Run program with this format to see TZD options :")
+    print("\"python3 DateTime.py -tzd\"")
     sys.exit()
 
 # Grab wanted new TZD
