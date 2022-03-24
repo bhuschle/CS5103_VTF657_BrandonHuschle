@@ -17,7 +17,7 @@ minute = int(userInput[4])
 tzd = userInput[5]
 
 # Test that information split properly
-# print("hour " + hour + " minute " + minute + " TZD " + tzd)
+# print(month, day, year, hour, minute, tzd)
 
 # Convert to UTC
 
@@ -73,6 +73,8 @@ elif (newHour > 24):
 
 
 # convert days under 10 to strings so they have the 0 in front of them
+newDay = day
+
 if (newDay < 10):
     if (newDay == 1):
         newDay = '01'
@@ -118,4 +120,5 @@ if (newHour < 10):
 # if so then change time during UTC before switching to new TZD
 
 # print out new time for User
+print(month, day, year)
 print(hour , ":" , minute , ":" , newTZD)
