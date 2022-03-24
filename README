@@ -9,7 +9,15 @@ add functionality which allows adding daylight-saving starting date time and day
 Assume that all time zones share the same starting / ending date time
 
 #### How to use
-> python3 DateTime.py mm:dd:yyyy:hh:mm:TZD newTZD
+> python3 DateTime.py MM:DD:YYYY:hh:mm:TZD newTZD
+
+MM     = month
+DD     = day
+YYYY   = year
+hh     = hour
+mm     = minute
+TZD    = Time Zone 
+newTZD = new Time Zone
 Must be used with Military Time
 Only used with American based Time zones
 
