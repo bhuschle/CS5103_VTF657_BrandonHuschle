@@ -63,5 +63,59 @@ else:
     print("You have not entered a valid TZD")
     sys.exit()
 
+# check hour and minute to see if date will have changed
+if (newHour == 24):
+    newHour = '00'
+    newDay = day + 1
+elif (newHour > 24):
+    newHour = newHour - 24
+    newDay = day + 1
+
+
+# convert days under 10 to strings so they have the 0 in front of them
+if (newDay < 10):
+    if (newDay == 1):
+        newDay = '01'
+    elif (newDay == 2):
+        newDay = '02'
+    elif (newDay == 2):
+        newDay = '03'
+    elif (newDay == 2):
+        newDay = '04'
+    elif (newDay == 2):
+        newDay = '05'
+    elif (newDay == 2):
+        newDay = '06'
+    elif (newDay == 2):
+        newDay = '07'
+    elif (newDay == 2):
+        newDay = '08'
+    elif (newDay == 2):
+        newDay = '09'
+
+# convert hours under 10 to strings so they have the 0 in front of them
+if (newHour < 10):
+    if (newHour == 1):
+        newHour = '01'
+    elif (newHour == 2):
+        newHour = '02'
+    elif (newHour == 2):
+        newHour = '03'
+    elif (newHour == 2):
+        newDay = '04'
+    elif (newHour == 2):
+        newDay = '05'
+    elif (newHour == 2):
+        newHour = '06'
+    elif (newHour == 2):
+        newHour = '07'
+    elif (newHour == 2):
+        newHour = '08'
+    elif (newHour == 2):
+        newHour = '09'
+
+# calculate date and time to see if it is daylight savings time
+# if so then change time during UTC before switching to new TZD
+
 # print out new time for User
 print(hour , ":" , minute , ":" , newTZD)
