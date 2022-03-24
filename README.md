@@ -32,3 +32,11 @@ MDT - Mountain Daylight Time
 CDT - Central Daylight Time  
 EDT - Eastern Daylight Time  
 
+#### How to run test script
+> python3 testScript.py
+
+This will run multiple tests on the program  
+- Spring Forward _ March 12th after 2am
+- Fall back _ November 6th after 2am
+- Month and year change
+
