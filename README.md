@@ -40,3 +40,8 @@ This will run multiple tests on the program
 - Fall back _ November 6th after 2am
 - Month and year change
 
+#### BONUS
+- try running the program without any options
+- try running the program with a TZD that is not listed
+- try running the program with the -h option
+- try running the program with the -tzd option
