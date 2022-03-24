@@ -1,6 +1,6 @@
-# CS5103_VTF657_BrandonHuschle
+# Final project
 
-Final project
+CS5103_VTF657_BrandonHuschle
 
 ## Date Time Transformation
 
