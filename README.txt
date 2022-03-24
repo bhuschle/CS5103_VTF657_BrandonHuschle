@@ -4,6 +4,7 @@ Final project
 
 ## Date Time Transformation
 ### First Requirements
+Transform the given date and time zone to any different given date and time zone
 
 #### How to use
 > python3 DateTime.py hh:mm:TZD newTZD
