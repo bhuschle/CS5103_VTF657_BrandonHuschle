@@ -9,6 +9,7 @@ import sys
 
 # Grab user input - split by :
 userInput = sys.argv[1].split(":")
+
 month = int(userInput[0])
 day = int(userInput[1])
 year = int(userInput[2])
@@ -37,6 +38,7 @@ elif (tzd == 'CDT'):
     newHour += 5
 elif (tzd == 'EDT'):
     newHour += 4
+
 else:
     print("You have not entered a valid TZD")
     sys.exit()
@@ -64,7 +66,6 @@ elif (newTZD == 'UTC'):
 else:
     print("You have not entered a valid TZD")
     sys.exit()
-
 
 # initialize new variables for month, day, year
 newMonth = month
