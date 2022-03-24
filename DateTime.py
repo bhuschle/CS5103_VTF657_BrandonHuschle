@@ -63,17 +63,32 @@ else:
     print("You have not entered a valid TZD")
     sys.exit()
 
-# check hour and minute to see if date will have changed
-if (newHour == 24):
-    newHour = '00'
-    newDay = day + 1
-elif (newHour > 24):
-    newHour = newHour - 24
-    newDay = day + 1
 
+# initialize new variables for month, day, year
+newMonth = month
+newDay = day
+newYear = year
+
+# check that the month has not changed
+thirtyOne = [1, 3, 5, 7, 8, 10, 12]
+if (newMonth in thirtyOne and newDay > 31):
+    if (newMonth != 12):
+        newDay -= 31
+        newMonth += 1
+    else:
+        newDay -= 31
+        newMonth = 1
+        newYear += 1
+elif (newMonth == 2 and newDay > 28):
+    newDay -= 28
+    newMonth += 1
+else:
+    if (newDay > 30):
+        newDay -= 30
+        newMonth += 1
+        
 
 # convert days under 10 to strings so they have the 0 in front of them
-newDay = day
 
 if (newDay < 10):
     if (newDay == 1):
@@ -95,8 +110,16 @@ if (newDay < 10):
     elif (newDay == 2):
         newDay = '09'
 
+# check hour and minute to see if date will have changed
+if (newHour == 24):
+    newHour = '00'
+    newDay = day + 1
+elif (newHour > 24):
+    newHour = newHour - 24
+    newDay = day + 1
+
 # convert hours under 10 to strings so they have the 0 in front of them
-if (newHour < 10):
+if (newHour != '00' and newHour < 10):
     if (newHour == 1):
         newHour = '01'
     elif (newHour == 2):
@@ -120,5 +143,5 @@ if (newHour < 10):
 # if so then change time during UTC before switching to new TZD
 
 # print out new time for User
-print(month, day, year)
-print(hour , ":" , minute , ":" , newTZD)
+print(newMonth, newDay, newYear)
+print(newHour , ":" , minute , ":" , newTZD)
