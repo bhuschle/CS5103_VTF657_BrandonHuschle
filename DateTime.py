@@ -19,22 +19,24 @@ tzd = userInput[5]
 # Test that information split properly
 # print(month, day, year, hour, minute, tzd)
 
-# Convert to UTC
+# initialize new hour variable to make changes
+newHour = hour
 
+# Convert to UTC
 if (tzd == 'HST'):
-    newHour = hour + 10
+    newHour += 10
 elif (tzd == 'HDT'):
-    newHour = hour + 9
+    newHour += 9
 elif (tzd == 'AKDT'):
-    newHour = hour + 8
+    newHour += 8
 elif (tzd == 'PDT'):
-    newHour = hour + 7
+    newHour += 7
 elif (tzd == 'MST'):
-    newHour = hour + 7
+    newHour += 7
 elif (tzd == 'CDT'):
-    newHour = hour + 5
+    newHour += 5
 elif (tzd == 'EDT'):
-    newHour = hour + 4
+    newHour += 4
 else:
     print("You have not entered a valid TZD")
     sys.exit()
@@ -44,19 +46,19 @@ newTZD = sys.argv[2]
 
 # Convert UTC to new tzd
 if (newTZD == 'HST'):
-    newHour = newHour - 10
+    newHour -= 10
 elif (newTZD == 'HDT'):
-    newHour = newHour - 9
+    newHour -= 9
 elif (newTZD == 'AKDT'):
-    newHour = newHour - 8
+    newHour -= 8
 elif (newTZD == 'PDT'):
-    newHour = newHour - 7
+    newHour -= 7
 elif (newTZD == 'MST'):
-    newHour = newHour - 7
+    newHour -= 7
 elif (newTZD == 'CDT'):
-    newHour = newHour - 5
+    newHour -= 5
 elif (newTZD == 'EDT'):
-    newHour = newHour - 4
+    newHour -= 4
 elif (newTZD == 'UTC'):
     newHour = newHour
 else:
@@ -72,39 +74,43 @@ newYear = year
 # check hour and minute to see if date will have changed
 if (newHour == 24):
     newHour = '00'
-    newDay = day + 1
+    newDay += 1
 elif (newHour > 24):
-    newHour = newHour - 24
-    newDay = day + 1
+    newHour -= 24
+    newDay += 1
 
 # check that the month has not changed
 thirtyOne = [1, 3, 5, 7, 8, 10, 12]
 if (newMonth in thirtyOne and newDay > 31):
     if (newMonth == 12):
-        newDay = newDay - 31
+        newDay -= 31
         newMonth = 1
-        newYear = newYear + 1
+        newYear += 1
     else:
-        newDay = newDay - 31
-        newMonth = newMonth + 1
+        newDay -= 31
+        newMonth += 1
 elif (newMonth == 2 and newDay > 28):
-    newDay = newDay - 28
-    newMonth = newMonth + 1
+    newDay -= 28
+    newMonth += 1
 else:
     if (newDay > 30):
-        newDay = newDay - 30
-        newMonth = newMonth + 1
+        newDay -= 30
+        newMonth += 1
 
 # check daylight savings time to see if hour needs to be increased
 if (newMonth == 3 and newDay == 13 and newHour == 2 and minute > 0):
     newHour += 1
 elif (newMonth == 3 and newDay == 13 and newHour > 2 and hour < 2):
     newHour += 1
+elif (newMonth == 3 and newDay == 13 and newHour > 2 and day == 12):
+    newHour += 1
 
 # check daylight savings time to see if hour needs to be decreased
 if (newMonth == 11 and newDay == 6 and newHour == 2 and minute > 0):
     newHour -= 1
 elif (newMonth == 11 and newDay == 6 and newHour > 2 and hour < 2):
+    newHour -= 1
+elif (newMonth == 11 and newDay == 6 and newHour > 2 and day == 10):
     newHour -= 1
 
 # convert months under 10 to strings so they have the 0 in front of them
@@ -149,7 +155,6 @@ if (newDay < 10):
     elif (newDay == 9):
         newDay = '09'
 
-
 # convert hours under 10 to strings so they have the 0 in front of them
 if (newHour != '00' and newHour < 10):
     if (newHour == 1):
@@ -159,9 +164,9 @@ if (newHour != '00' and newHour < 10):
     elif (newHour == 3):
         newHour = '03'
     elif (newHour == 4):
-        newDay = '04'
+        newHour = '04'
     elif (newHour == 5):
-        newDay = '05'
+        newHour = '05'
     elif (newHour == 6):
         newHour = '06'
     elif (newHour == 7):
@@ -170,9 +175,6 @@ if (newHour != '00' and newHour < 10):
         newHour = '08'
     elif (newHour == 9):
         newHour = '09'
-
-# calculate date and time to see if it is daylight savings time
-# if so then change time during UTC before switching to new TZD
 
 # print out new time for User
 print(newMonth, newDay, newYear)
