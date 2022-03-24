@@ -69,6 +69,14 @@ newMonth = month
 newDay = day
 newYear = year
 
+# check hour and minute to see if date will have changed
+if (newHour == 24):
+    newHour = '00'
+    newDay = day + 1
+elif (newHour > 24):
+    newHour = newHour - 24
+    newDay = day + 1
+
 # check that the month has not changed
 thirtyOne = [1, 3, 5, 7, 8, 10, 12]
 if (newMonth in thirtyOne and newDay > 31):
@@ -141,13 +149,6 @@ if (newDay < 10):
     elif (newDay == 9):
         newDay = '09'
 
-# check hour and minute to see if date will have changed
-if (newHour == 24):
-    newHour = '00'
-    newDay = day + 1
-elif (newHour > 24):
-    newHour = newHour - 24
-    newDay = day + 1
 
 # convert hours under 10 to strings so they have the 0 in front of them
 if (newHour != '00' and newHour < 10):
