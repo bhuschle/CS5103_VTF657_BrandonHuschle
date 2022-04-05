@@ -7,7 +7,6 @@
 
 import sys
 
-
 # Check to see if user input any information
 if len(sys.argv) == 1:
     print("Please add the correct information when running the program")
