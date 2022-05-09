@@ -6,6 +6,7 @@
 # EX : 12:21:2022:15:30:UTC
 
 import sys
+import datetime
 
 
 # Check to see if user input any information
@@ -161,6 +162,8 @@ elif (newMonth == 11 and newDay == 6 and newHour > 2 and hour < 2):
 elif (newMonth == 11 and newDay == 6 and newHour > 2 and day == 10):
     newHour -= 1
 
+weekday = datetime.date(year, month, day)
+
 # convert months under 10 to strings so they have the 0 in front of them
 if (newMonth < 10):
     if (newMonth == 1):
@@ -226,4 +229,4 @@ if (newHour != '00' and newHour < 10):
 
 # print out new time for User
 print(newMonth, newDay, newYear)
-print(newHour , ":" , minute , ":" , newTZD)
+print(weekday.strftime("%A"), " ", newHour , ":" , minute , ":" , newTZD)
